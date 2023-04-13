@@ -1,11 +1,13 @@
 import pandas as pd
 import numpy as np
+import scipy.stats as st 
+from statsmodels.stats.weightstats import ztest as ztest
 
+chat_id = 881258336 # Ваш chat ID, не меняйте название переменной
 
-chat_id = 123456 # Ваш chat ID, не меняйте название переменной
-
-def solution(...) -> bool: # Одна или две выборке на входе, заполняется исходя из условия
-    # Измените код этой функции
-    # Это будет вашим решением
-    # Не меняйте название функции и её аргументы
-    return ... # Ваш ответ, True или False
+def solution(x: np.array) -> bool: 
+    p_value=ztest(x, value=500, alternative = 'larger')[1]
+    if (p_value<0.06): 
+        return True 
+    else: 
+        return False
